@@ -45,7 +45,7 @@ function init () {
             viewAllDepartments();
         } else if (answers.choice === "View All Roles") {
             viewAllRoles();
-        } else if (answers.choice === "View All Employee") {
+        } else if (answers.choice === "View All Employeea") {
             viewAllEmployees();
         } else if (answers.choice === "Add An Employee") {
             addEmployee();
@@ -65,8 +65,47 @@ function init () {
 }
 
 // View choices
-function viewEmployee(){
+function viewEmployees(){
     db.query("SELECT * FROM employee")
-    if (err){}
+    if (err){
+         console.error(err);
+         return;
+    }
+    console.log(employees)
+    init();
+}
+
+function viewDepartments(){
+    db.query("SELECT * FROM deparments")
+    if (err) {
+        console.log(departments);
+        return;
+    }
+    console.log(departments)
+    init();
+}
+
+// Add new choice
+
+function addEmployee(){
+    inquirer.prompt([{
+        type: 'input',
+        name: 'firstName',
+        message: 'First Name:',
+    
+    },
+    {
+        type: 'input',
+        name: 'lastName',
+        message: 'Last Name:',
+    },
+    {
+        type: 'input',
+        name:'roleID',
+        message: 'Role ID:',
+    },
+
+
+])
 }
 
